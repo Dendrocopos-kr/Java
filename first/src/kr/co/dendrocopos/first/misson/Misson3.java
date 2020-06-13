@@ -158,11 +158,13 @@ public class Misson3 {
 		int manAvg = 160;
 		int womanAvg = 150;
 		
-		if ( 	   ("남".equals(gender) && (urHeight == manAvg))	|| ( "여".equals(gender) && urHeight == womanAvg) ){
+		if ( 	   ( "남".equals(gender) && ( urHeight == manAvg ))	|| ( "여".equals(gender) && ( urHeight == womanAvg )) ){
 			System.out.println("평균입니다.");
-		}else if(  ("남".equals(gender) && urHeight > manAvg) 	|| ( "여".equals(gender) && urHeight > womanAvg ) ){
+		}
+		else if(   ( "남".equals(gender) && urHeight > manAvg ) 	|| ( "여".equals(gender) && urHeight > womanAvg ) ){
 			System.out.println("평균초과입니다.");
-		}else if ( ("남".equals(gender) && urHeight < manAvg)	|| ( "여".equals(gender) && urHeight < womanAvg ) ){
+		}
+		else if (  ( "남".equals(gender) && urHeight < manAvg )	|| ( "여".equals(gender) && urHeight < womanAvg ) ){
 			System.out.println("평균미만입니다.");
 		}
 		
@@ -200,8 +202,6 @@ public class Misson3 {
 			boolean bEqaulHeightWoman = (urHeight == womanAvg);
 			boolean bUnderHeightWoman = urHeight < womanAvg;
 			
-			
-			
 			if ( (bManGender && bEqaulHeightMan) || ( bWomanGender && bEqaulHeightWoman) ){
 				System.out.println("평균입니다.");
 			}else if( (bManGender && bOverHeightMan) || ( bWomanGender && bOverHeightWoman) ){
@@ -214,8 +214,8 @@ public class Misson3 {
 			strRetry = scan.next();
 		}
 		while ( "R".equals(strRetry) || "r".equals(strRetry) || "ㄱ".equals(strRetry));
-		
 		*/
+		
 		
 		scan.close();
 		
