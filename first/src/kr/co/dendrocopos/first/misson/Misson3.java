@@ -150,6 +150,7 @@ public class Misson3 {
 		*/
 		// 4번째
 		
+		/*
 		Scanner scan = new Scanner(System.in);
 		System.out.println("성별을 입력해주세요: (남/여) ");
 		String gender = scan.next();
@@ -165,10 +166,10 @@ public class Misson3 {
 		}else if ( ("남".equals(gender) && urHeight < manAvg)	|| ( "여".equals(gender) && urHeight < womanAvg ) ){
 			System.out.println("평균미만입니다.");
 		}
-		
+		*/
 		
 		// 5번째
-		/*
+		
 		Scanner scan = new Scanner(System.in);
 		String strRetry;
 		
@@ -201,19 +202,21 @@ public class Misson3 {
 			boolean bEqaulHeightWoman = (urHeight == womanAvg);
 			boolean bUnderHeightWoman = urHeight < womanAvg;
 			
-			if( (bManGender && bOverHeightMan) || ( bWomanGender && bOverHeightWoman) ){
+			
+			
+			if ( (bManGender && bEqaulHeightMan) || ( bWomanGender && bEqaulHeightWoman) ){
+				System.out.println("평균입니다.");
+			}else if( (bManGender && bOverHeightMan) || ( bWomanGender && bOverHeightWoman) ){
 				System.out.println("평균초과입니다.");
 			}else if ( (bManGender && bUnderHeightMan) || ( bWomanGender && bUnderHeightWoman) ){
 				System.out.println("평균미만입니다.");
-			}else if ( (bManGender && bEqaulHeightMan) || ( bWomanGender && bEqaulHeightWoman) ){
-				System.out.println("평균입니다.");
 			}
 			
 			System.out.println("\n재입력은 'R'을 입력해주세요. 그 외는 종료.");
 			strRetry = scan.next();
 		}
-		while ( "R".equals(strRetry) || "r".equals(strRetry));
-		*/
+		while ( "R".equals(strRetry) || "r".equals(strRetry) || "ㄱ".equals(strRetry));
+		
 		
 		scan.close();
 		
