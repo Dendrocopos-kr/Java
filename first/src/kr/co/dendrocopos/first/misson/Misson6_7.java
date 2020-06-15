@@ -15,7 +15,6 @@ public class Misson6_7 {
 					System.out.printf("*");					
 				}
 				*/
-				
 			}
 			System.out.println();
 		}
