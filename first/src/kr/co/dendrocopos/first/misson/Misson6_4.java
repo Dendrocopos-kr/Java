@@ -6,7 +6,7 @@ public class Misson6_4 {
 			for(int j = 2 ; j < 10; j++) {
 				System.out.printf("%d * %d = %d \t ",j ,i , i*j );
 			}
-			System.out.println();
+			System.out.printf("\n");
 		}
 	}
 }
