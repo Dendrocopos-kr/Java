@@ -17,9 +17,10 @@ public class Practice2 {
 			for( int j = 0; j < 13; j++)
 			{
 				card[i][j] = j > 10 ? 11 : j+1 ;
-				//System.out.printf( "%d ", card[i][j]);
+				System.out.printf( "%d ", card[i][j]);
 			}
-			//System.out.println();
+			System.out.println();
 		}
+		
 	}
 }
