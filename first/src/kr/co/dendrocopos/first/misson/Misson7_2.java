@@ -3,7 +3,7 @@ package kr.co.dendrocopos.first.misson;
 public class Misson7_2 {
 	public static void main(String[] args) {
 		int nSum = 0;
-		int nNum = 1;
+		int nNum = 0;
 		while( nNum <= 100 ) {
 			nSum += nNum++;
 		}
