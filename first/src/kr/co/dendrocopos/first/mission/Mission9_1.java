@@ -21,7 +21,8 @@ public class Mission9_1 {
 		 * for (int i = 1; i < arr_int.length; i+=2) { sum += arr_int[i]; }
 		 */
 		for (int i = 0; i < arr_int.length; i++) {
-			if (i != 0) {
+			if (i != 0) { 
+			// if( i > 0 ) {
 				System.out.print(",");
 			}
 			System.out.print(arr_int[i]);
