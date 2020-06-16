@@ -1,8 +1,8 @@
-package kr.co.dendrocopos.first.misson;
+package kr.co.dendrocopos.first.mission;
 
 import java.util.Scanner;
 
-public class Misson3 {
+public class Mission3 {
 	public static void main(String[] args) {		
 		/*
 		// 초안.

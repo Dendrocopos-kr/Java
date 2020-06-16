@@ -1,6 +1,6 @@
-package kr.co.dendrocopos.first.misson;
+package kr.co.dendrocopos.first.mission;
 
-public class Misson6_1 {
+public class Mission6_1 {
 	public static void main(String[] args) {
 		int dan = 4;
 		/*for (int i = 14; i < 23; i++) {

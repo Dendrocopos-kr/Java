@@ -1,8 +1,8 @@
-package kr.co.dendrocopos.first.misson;
+package kr.co.dendrocopos.first.mission;
 
 import java.util.Scanner;
 
-public class Misson4 {
+public class Mission4 {
 	public static void main(String[] args) {
 		System.out.print("월을 입력해주세요: (1~12)");
 		Scanner scan = new Scanner(System.in);

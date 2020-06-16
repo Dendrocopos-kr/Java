@@ -1,4 +1,4 @@
-package kr.co.dendrocopos.first.misson;
+package kr.co.dendrocopos.first.mission;
 
 import java.util.Random;
 

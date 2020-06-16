@@ -1,8 +1,8 @@
-package kr.co.dendrocopos.first.misson;
+package kr.co.dendrocopos.first.mission;
 
 import java.util.Scanner;
 
-public class Misson2 {
+public class Mission2 {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		

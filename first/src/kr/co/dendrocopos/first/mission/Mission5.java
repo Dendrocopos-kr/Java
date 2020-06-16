@@ -1,8 +1,8 @@
-package kr.co.dendrocopos.first.misson;
+package kr.co.dendrocopos.first.mission;
 
 import java.util.Scanner;
 
-public class Misson5 {
+public class Mission5 {
 	public static void main(String[] args) {
 		System.out.print("정수를 입력해주세요: ( 0 ~ 100 )");
 
