@@ -56,7 +56,7 @@ public class Arrayorder3 {
 		}
 		*/
 		
-		System.out.print("버블정렬  후 : {");
+		System.out.print("버블정렬  후 : { ");
 		for (int i = 0; i < arr.length; i++) {
 			System.out.print(i > 0 ? ", " + arr[i] : arr[i]);
 		}
