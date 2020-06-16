@@ -11,20 +11,20 @@ public class Arrayorder2 {
 		for (int i = 0; i < arr.length; i++) {
 			System.out.print(i > 0 ? ", " + arr[i] : arr[i]);
 		}
-		System.out.println(" }\n");
-		System.out.println("() = i 위치, [],<> = 비교중인 값 => 비교하여 작은값에 <>표시 \n");
+		System.out.println(" }\n() = i 위치, [],<> = 비교중인 값 => 비교하여 작은값에 <>표시 \n");
 		// --------------------------------------//
 
 		for (int i = 0; i < arr.length - 1; i++) {
 			index = i;
 
+			
 			// --------------------------설명을 돕기위한 출력문
 			for (int k = 0; k < arr.length; k++) {
-				System.out.print(k > 0 ? ", " : "");
-				System.out.printf( "[%2d]" , k);
+				System.out.printf(k > 0 ? ", [%2d]" : "[%2d]",k);
 			}
 			System.out.println(" <== Array 표시");
 			// --------------------------------------//
+			
 			
 			for (int j = i + 1; j < arr.length; j++) {
 				
@@ -48,21 +48,22 @@ public class Arrayorder2 {
 				}
 				
 				// --------------------------설명을 돕기위한 출력문
-				System.out.println("   \t현재 제일 작은 위치 값(least) : "+ index);
+				System.out.println("   \t현재 제일 작은값 위치 (least) : "+ index);
 				// --------------------------------------//
 				
 			}
 			
-			// --------------------------설명을 돕기위한 출력문
-			System.out.print(" => [ " + arr[i] + "" + " > " + arr[index] + " ]" + "\t?  " + (arr[i] > arr[index]));
-			System.out.println((arr[i] > arr[index]) ? " => ()와 <>변경" : "");
-			// --------------------------------------//
 			
 			if (index != i) {
 				int temp = arr[i];
 				arr[i] = arr[index];
 				arr[index] = temp;
-
+				
+				// --------------------------설명을 돕기위한 출력문
+				System.out.printf(" => [ %2d > %2d ] ... ()와<> 교환 \n",arr[i],arr[index]);		
+			}else {
+				System.out.printf(" => 교환없음 \n");
+				// --------------------------------------//		
 				
 			}
 

@@ -11,19 +11,19 @@ public class Arrayorder1 {
 		for (int i = 0; i < arr.length; i++) {
 			System.out.print(i > 0 ? ", " + arr[i] : arr[i]);
 		}
-		System.out.println(" }\n");
-		System.out.println("[] = 비교중인 값\n");
+		System.out.println(" }\n[] = 비교중인 값\n");
 		// --------------------------------------//
 		
 		for (int i = 0; i < arr.length - 1; i++) {
 			
+			/*
 			// --------------------------설명을 돕기위한 출력문
 			for (int k = 0; k < arr.length; k++) {
-				System.out.print(k > 0 ? ", " : "");
-				System.out.printf("[%2d]", k);
+				System.out.printf(k > 0 ? ", [%2d]" : "[%2d]",k);
 			}
 			System.out.println(" <== Array 표시");
 			// --------------------------------------//
+			*/
 			
 			for (int j = i + 1; j < arr.length; j++) {
 
@@ -32,8 +32,7 @@ public class Arrayorder1 {
 					System.out.print(k > 0 ? ", " : "");
 					System.out.printf(k == i || k == j ? "[%2d]" : " %2d ", arr[k]);
 				}
-				System.out.printf(" => [ %2d > %2d ] = %b", arr[i], arr[j], (arr[i] > arr[j]));
-				System.out.println((arr[i] > arr[j]) ? " => 두수 변경 " : "");
+				System.out.printf(" = [ %2d > %2d ] => %s\n", arr[i], arr[j], (arr[i] > arr[j]) ? " => 두수 변경 " : "");
 				// --------------------------------------//
 
 				if (arr[i] > arr[j]) {
