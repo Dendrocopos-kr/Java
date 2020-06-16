@@ -6,21 +6,15 @@ public class Practice2 {
 	public static void main(String[] args) {
 		//랜덤값 뽑기
 		
-		Random random_num = new Random();
-		int ten  = random_num.nextInt(3) + 1;
-		int one = random_num.nextInt(10) + 1;
-				
-		int[][] card = new int[4][13];
+		double r1 = Math.random();
+		int rVal1 = (int)(r1 * 16);
+		int rVal2 = (int)(Math.random() * 16);
+		int rVal3 = (int)(Math.random() * 15) + 1;
+		int rVal4 = (int)(Math.random() * 21) + 30;
+		System.out.println(rVal4);
 		
-		for(int i = 0 ; i < 4 ; i ++)
-		{
-			for( int j = 0; j < 13; j++)
-			{
-				card[i][j] = j > 10 ? 11 : j+1 ;
-				System.out.printf( "%d ", card[i][j]);
-			}
-			System.out.println();
-		}
-		
-	}
+		Random r2 = new Random();
+		int rVal0 = r2.nextInt(21) + 30;
+		System.out.println(rVal0);
+	}	
 }
