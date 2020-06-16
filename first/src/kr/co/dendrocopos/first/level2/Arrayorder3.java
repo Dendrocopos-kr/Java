@@ -4,6 +4,7 @@ package kr.co.dendrocopos.first.level2;
 public class Arrayorder3 {
 	public static void main(String[] args) {
 		int[] arr = { 29, 33, 15, 88, 2, 46, 92, 1, 19 };
+		
 		// --------------------------설명을 돕기위한 출력문
 		System.out.print("버블정렬 전 : { ");
 		for (int i = 0; i < arr.length; i++) {

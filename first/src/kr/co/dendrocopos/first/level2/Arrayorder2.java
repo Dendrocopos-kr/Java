@@ -46,9 +46,11 @@ public class Arrayorder2 {
 				if (arr[index] > arr[j]) {
 					index = j;
 				}
+				
 				// --------------------------설명을 돕기위한 출력문
 				System.out.println("   \t현재 제일 작은 위치 값(least) : "+ index);
 				// --------------------------------------//
+				
 			}
 			
 			// --------------------------설명을 돕기위한 출력문
@@ -67,7 +69,7 @@ public class Arrayorder2 {
 			System.out.println();
 
 		}
-		System.out.print("선택정렬  후 : {");
+		System.out.print("선택정렬  후 : { ");
 		for (int i = 0; i < arr.length; i++) {
 			System.out.print(i > 0 ? ", " + arr[i] : arr[i]);
 		}
