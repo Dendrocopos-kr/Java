@@ -1,4 +1,4 @@
-package kr.co.dendrocopos.first.repeat;
+package kr.co.dendrocopos.first.level2;
 
 public class While {
 	public static void main(String[] args) {
