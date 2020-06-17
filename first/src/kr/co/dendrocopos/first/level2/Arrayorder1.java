@@ -32,7 +32,7 @@ public class Arrayorder1 {
 					System.out.print(k > 0 ? ", " : "");
 					System.out.printf(k == i || k == j ? "[%2d]" : " %2d ", arr[k]);
 				}
-				System.out.printf(" = [ %2d > %2d ] => %s\n", arr[i], arr[j], (arr[i] > arr[j]) ? " => 두수 변경 " : "");
+				System.out.printf(" = [ %2d > %2d ] %s\n", arr[i], arr[j], (arr[i] > arr[j]) ? "=> 두수 변경 " : "");
 				// --------------------------------------//
 
 				if (arr[i] > arr[j]) {
