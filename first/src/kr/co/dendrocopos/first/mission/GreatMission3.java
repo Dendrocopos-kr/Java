@@ -24,7 +24,7 @@ public class GreatMission3 {
 		
 		
 		for( int i = 0 ; i < subject.length; i++) {
-			
+			System.out.println(subject[i] + ": " + Sum[i] + ", " + "평균");
 		}
 		System.out.printf(
 				  "영어: %d, 평균: %3.2f\n"
