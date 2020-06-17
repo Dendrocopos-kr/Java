@@ -2,7 +2,7 @@ package kr.co.dendrocopos.first.mission;
 
 import java.util.Scanner;
 
-public class Mission5 {
+public class Mission05 {
 	public static void main(String[] args) {
 		System.out.print("정수를 입력해주세요: ( 0 ~ 100 )");
 

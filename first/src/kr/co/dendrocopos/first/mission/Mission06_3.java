@@ -1,6 +1,6 @@
 package kr.co.dendrocopos.first.mission;
 
-public class Mission6_3 {
+public class Mission06_3 {
 	public static void main(String[] args) {
 		// 2~9단
 		

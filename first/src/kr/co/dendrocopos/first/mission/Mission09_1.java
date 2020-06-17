@@ -1,6 +1,6 @@
 package kr.co.dendrocopos.first.mission;
 
-public class Mission9_1 {
+public class Mission09_1 {
 	public static void main(String[] args) {
 
 		int max_index = 10;

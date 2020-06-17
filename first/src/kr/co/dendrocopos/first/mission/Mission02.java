@@ -2,7 +2,7 @@ package kr.co.dendrocopos.first.mission;
 
 import java.util.Scanner;
 
-public class Mission2 {
+public class Mission02 {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		

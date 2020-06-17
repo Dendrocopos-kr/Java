@@ -2,7 +2,7 @@ package kr.co.dendrocopos.first.mission;
 
 import java.util.Scanner;
 
-public class Mission3 {
+public class Mission03 {
 	public static void main(String[] args) {		
 		/*
 		// 초안.

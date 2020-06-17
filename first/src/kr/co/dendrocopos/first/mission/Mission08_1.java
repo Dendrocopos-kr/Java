@@ -3,7 +3,7 @@ package kr.co.dendrocopos.first.mission;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Mission8_1 {
+public class Mission08_1 {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		int input = 0;

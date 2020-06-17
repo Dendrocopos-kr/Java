@@ -1,6 +1,6 @@
 package kr.co.dendrocopos.first.mission;
 
-public class Mission6_7 {
+public class Mission06_7 {
 	public static void main(String[] args) {
 		int star = 5;
 		
