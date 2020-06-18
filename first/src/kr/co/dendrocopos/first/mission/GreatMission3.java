@@ -5,15 +5,19 @@ public class GreatMission3 {
 		//변수 선언
 		String[] strSubject = { "영어", "수학", "국어", "사회" };
 		int[][] arrScore = { 
-				{ 90, 100, 88 }, // 영어
-				{ 34, 99, 45 }, // 수학
-				{ 98, 65, 87 }, // 국어
-				{ 49, 51, 63 } // 사회
+				{ 90, 100, 88 } // 영어
+				,{ 34, 99, 45 } // 수학
+				,{ 98, 65, 87 } // 국어
+				,{ 49, 51, 63 } // 사회
 		};
+		
+		if(strSubject.length != arrScore.length) {
+			System.out.println("과목 개수("+strSubject.length+")와 점수 개수("+arrScore.length+")가 일치하지 않습니다.");
+			return;
+		}
 
 		int[] scoreSum = new int[strSubject.length];
 		int tSum = 0;
-
 		float[] scoreAvg = new float[strSubject.length];
 		float tAvg = 0.0f;
 		
