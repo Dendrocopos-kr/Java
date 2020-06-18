@@ -6,30 +6,59 @@ public class MethodMission02 {
 
 		// printStar(3);
 
-		// printStar(3,6);
-		printStarSqure(4);
+		// printStarSqure(4);
+		// printStarTriangle(5);
+
+		printStarTriangleRevers(5);
 	}
 
-	public static void printStar(int sStar, int eStar) {
-		for (int i = sStar; i <= eStar; i++) {
+	public static void printStarTriangleRevers(int Star) {
+		for (int i = 1; i <= Star; i++) {
+			parintString(Star - i," ");
+			parintString(i,"*");
+			
+			/*
+			printBlank(Star - i);
 			printStar(i);
+			*/
+			
+			System.out.println();
 		}
 	}
 
-	public static void printStar(int star) {
-
-		for (int i = 0; i < star; i++) {
-			System.out.print("*");
+	public static void printStarTriangle(int Star) {
+		for (int i = 1; i <= Star; i++) {
+			parintString(i,"*");
 		}
 		System.out.println();
 	}
 
 	public static void printStarSqure(int star) {
-
 		for (int i = 0; i < star; i++) {
-			printStar(star);
+			parintString(star,"*");
 		}
 		System.out.println();
+	}
+	
+	/*
+	public static void printStar(int star) {
+		for (int i = 0; i < star; i++) {
+			System.out.print("*");
+		}
+	}
+
+	public static void printBlank(int Blank) {
+		for (int i = 0; i < Blank; i++) {
+			System.out.print(" ");
+		}
+	}
+	*/
+	
+	public static void parintString(int num, String str)
+	{
+		for (int i = 0; i < num; i++) {
+			System.out.print(str);
+		}
 	}
 
 }
