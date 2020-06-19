@@ -1,7 +1,5 @@
 package kr.co.dendrocopos.first.baseball;
 
-import java.util.Scanner;
-
 public class Game {
 	public static void main(String[] args) {
 		final int BALLCOUNT = 3;
@@ -11,8 +9,10 @@ public class Game {
 		bb.GameStart();
 		
 		bb.InputNumber();
-		
-		bb.ContinueToThrow();
+		while(bb.ContinueToThrow()) {
+			bb.ContinueToThrow();
+			
+		}
 		
 		
 		

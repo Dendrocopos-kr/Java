@@ -75,8 +75,6 @@ public class Baseball {
 			throwNumber[i] = scan.nextInt();
 		}
 		scan.close();
-		
-		CheckingNumber();
 	}
 	
 	public boolean ContinueToThrow() {
