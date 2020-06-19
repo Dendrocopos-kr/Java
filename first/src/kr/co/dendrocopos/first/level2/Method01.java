@@ -1,6 +1,6 @@
 package kr.co.dendrocopos.first.level2;
 
-public class Method1 {
+public class Method01 {
 	
 	public static void main(String[] args) {
 		int[] a = { 10, 15 };

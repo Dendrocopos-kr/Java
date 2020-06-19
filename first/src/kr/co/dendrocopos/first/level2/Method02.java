@@ -1,6 +1,6 @@
 package kr.co.dendrocopos.first.level2;
 
-public class Method2 {
+public class Method02 {
 	public static void main(String[] args) {
 
 		System.out.println("args.length:" + args.length);

@@ -1,6 +1,6 @@
 package kr.co.dendrocopos.first.level2;
 
-public class Method3 {
+public class Method03 {
 	public static void main(String[] args) {
 		int result = sum( 30 , 10 );
 		System.out.println(result);
