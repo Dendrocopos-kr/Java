@@ -3,20 +3,19 @@ package kr.co.dendrocopos.first.baseball;
 public class Game {
 	public static void main(String[] args) {
 		
-		Baseball bb = new Baseball();
+		// 초기화
+		Baseball BaseBallGame = new Baseball();
+		BaseBallGame.Initialization();
 		
-		bb.Initialization();
-		
-		bb.StartGame();
-		
+		//업데이트
 		while(true) {
-			bb.ThrowNumber();
-			if(bb.CheckingSBO()){
+			BaseBallGame.ThrowNumber();
+			if(BaseBallGame.CheckingSBO()){
 				break;
 			}
-		}	
-		bb.EndGame();
+		}
 		
-		
+		//종료
+		BaseBallGame.Release();		
 	}
 }
