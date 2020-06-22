@@ -5,15 +5,28 @@ public class Game {
 		
 		// 초기화
 		Baseball BaseBallGame = new Baseball();
-		BaseBallGame.Initialization();
 		
-		//업데이트
+		
+		BaseBallGame.ArrInitialization();
+		//업데이트 - 배열로
+		while(true) {
+			BaseBallGame.ArrThrowNumber();
+			if(BaseBallGame.ArrCheckingSBO()){
+				break;
+			}
+			
+		}
+		
+		/*
+		BaseBallGame.Initialization();
+		//업데이트 - 배열 하나하나
 		while(true) {
 			BaseBallGame.ThrowNumber();
 			if(BaseBallGame.CheckingSBO()){
 				break;
 			}
 		}
+		*/
 		
 		//종료
 		BaseBallGame.Release();		
