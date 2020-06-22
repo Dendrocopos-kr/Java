@@ -3,16 +3,13 @@ package kr.co.dendrocopos.first.baseball;
 import java.util.Scanner;
 
 public class Baseball {
-
+	// DEFAULT (자료형) => private + package;
 	private int nBaseballs;
 	private int nRange;
 
 	private int nBaseballsCheck;
 	private int nRangeCheck;
 
-	private int nBall;
-	private int nStrike;
-	private int nOut;
 	private int nTry;
 	private int[] arrBallNumber;
 	private int[] arrThrowNumber;
@@ -84,7 +81,9 @@ public class Baseball {
 	}
 
 	public boolean CheckingSBO() { // 숫자 확인 SBO 출력
-		nStrike = nBall = 0;
+		int nBall = 0;
+		int nStrike = 0;
+		int nOut;
 		nTry++;
 		for (int i = 0; i < nBaseballs; i++) {
 			for (int j = 0; j < nBaseballs; j++) {
@@ -117,7 +116,7 @@ public class Baseball {
 			if (arrThrowNumber[selectedNumber] >= 1 && arrThrowNumber[selectedNumber] <= nRange) {
 				break;
 			} else {
-				System.out.printf("입력값 : %d, 범위를 벗어났습니다. 범위( 1~%d )\n", arrThrowNumber[selectedNumber], nRange);
+				System.out.printf("입력값 : %d, 범위를 벗어났습니다. 범위( 1~%d )\n다시 입력해주세요. : ", arrThrowNumber[selectedNumber], nRange);
 				arrThrowNumber[selectedNumber] = scan.nextInt();
 			}
 		}
