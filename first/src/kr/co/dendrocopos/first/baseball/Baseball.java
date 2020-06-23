@@ -42,7 +42,7 @@ public class Baseball {
 	public void setArrThrowNumber(int[] arrThrowNumber) {this.arrThrowNumber = arrThrowNumber;}
 	// 한개씩 입출력
 	public int getThrowNumber(int i) {return arrThrowNumber[i];}
-	public void setThrowNumber(int i, int ThrowNumber) {this.arrThrowNumber[i] = ThrowNumber;}
+	public void setThrowNumber(int i, int throwNumber) {this.arrThrowNumber[i] = throwNumber;}
 
 	// 시도 횟수
 	private int Try; 
@@ -65,14 +65,14 @@ public class Baseball {
 	}
 
 	// 공통 사항
-	private void InsertBallsNRange() { // 공개수와 범위 입력
+	private void insertBallsNRange() { // 공개수와 범위 입력
 		System.out.println("숫자 야구게임을 시작합니다. \n\n맞출 숫자의 갯수와 범위를 정해주세요");
 		System.out.print("맞출숫자 < 맞출범위 :");
 		changeBaseballs = scan.nextInt();
 		changeRange = scan.nextInt();
 	}
 
-	private void CheckingSet() { // 범위와 공 개수 확인 ( 공 0개이하 or 공개수 >= 범위면 초기값 공3,범위1~9 )
+	private void checkingSet() { // 범위와 공 개수 확인 ( 공 0개이하 or 공개수 >= 범위면 초기값 공3,범위1~9 )
 
 		if (changeBaseballs < 1 || changeRange <= changeBaseballs) {
 			System.out.println("설정 오류로 기본셋팅으로 시작합니다.");
@@ -86,12 +86,12 @@ public class Baseball {
 		arrThrowNumber = new int[balls];
 	}
 
-	private void PrintStartGame() { // 시작문구 출력
+	private void printStartGame() { // 시작문구 출력
 		System.out.printf("------- %d 숫자 야구게임 ------- \n", balls);
 	}
 	
 
-	private void SuffleBallNumber() { // 숫자 섞기 = 값 단위로 하나씩 변경
+	private void suffleBallNumber() { // 숫자 섞기 = 값 단위로 하나씩 변경
 		int maxRandomNumber = Range;
 		for (int i = 0; i < balls; i++) {
 
@@ -105,14 +105,14 @@ public class Baseball {
 		}
 	}
 
-	public void Initialization() { // 개별로 시작시 초기화
-		InsertBallsNRange(); // 1. 범위와 공개수 입력
-		CheckingSet(); // 2. 범위와 공개수 오류검출
-		SuffleBallNumber(); // 3.  공의 숫자섞기 하나씩
-		PrintStartGame(); // 4. 시작문구 출력
+	public void initialization() { // 개별로 시작시 초기화
+		insertBallsNRange(); // 1. 범위와 공개수 입력
+		checkingSet(); // 2. 범위와 공개수 오류검출
+		suffleBallNumber(); // 3.  공의 숫자섞기 하나씩
+		printStartGame(); // 4. 시작문구 출력
 	}
 	
-	public boolean CheckingSBO() { // 숫자 확인 SBO 출력
+	public boolean checkingSBO() { // 숫자 확인 SBO 출력
 		int nBall = 0;
 		int nStrike = 0;
 		int nOut;
@@ -134,14 +134,14 @@ public class Baseball {
 		return (nStrike == balls) ? true : false;
 	}
 
-	public void ThrowNumber() { // 숫자 입력 받기 한개씩
+	public void throwNumber() { // 숫자 입력 받기 한개씩
 		System.out.printf("숫자 %d개를 입력하세요.", balls);
 		for (int i = 0; i < balls; i++) {
-			arrThrowNumber[i] = RangeCheck(scan.nextInt());
+			arrThrowNumber[i] = rangeCheck(scan.nextInt());
 		}
 	}
 	
-	private  int RangeCheck(int insertNumber) { // 범위 밖의 숫자 입력시
+	private  int rangeCheck(int insertNumber) { // 범위 밖의 숫자 입력시
 		while (true) {
 			if (insertNumber >= 1 && insertNumber <= Range) {
 				return insertNumber;
@@ -152,7 +152,7 @@ public class Baseball {
 		}
 	}
 
-	public void Release() { // 정답출력, scan 닫기
+	public void release() { // 정답출력, scan 닫기
 		System.out.printf("도전횟수 : %d \n정답 : ", Try);
 		System.out.println(Arrays.toString(arrBallNumber));
 		scan.close();

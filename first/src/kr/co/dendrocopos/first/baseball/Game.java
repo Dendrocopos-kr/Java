@@ -6,17 +6,16 @@ public class Game {
 		// 초기화
 		Baseball BaseBallGame = new Baseball();
 				
-		BaseBallGame.Initialization();
-		//업데이트 - 배열 하나하나
+		BaseBallGame.initialization();
+		//업데이트
 		while(true) {
-			BaseBallGame.ThrowNumber();
-			if(BaseBallGame.CheckingSBO()){
+			BaseBallGame.throwNumber();
+			if(BaseBallGame.checkingSBO()){
 				break;
 			}
 		}
 		
-		
 		//종료
-		BaseBallGame.Release();		
+		BaseBallGame.release();		
 	}
 }
