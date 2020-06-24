@@ -10,16 +10,55 @@ public class MyListTest {
 		list.add(15);
 		list.add(20);
 
-		list.add(2, 100);
+		int[] a = { 40,50,80 };
+
+		list.add(1, 1200);
 		// list.remove(3);
 		// list.remove();
 		// list.clear();
 
-		int delVal = list.remove(1);
-		System.out.println("삭제된 값: " + delVal);
+		// list.remove();
 
-		list.printToString();
+		list.addAll(3, a);
 
+		MyArrays.print(list);
+
+		String str = MyArrays.toString(list);
+		System.out.println(str);
+
+	}
+}
+
+class MyArrays {
+	static void print(MyList list) {
+		/*
+		System.out.print("[");
+		for (int i = 0; i < list.size(); i++) {
+			System.out.printf(i > 0 ? ", %d" : "%d", list.get(i));
+		}
+		System.out.println("]");
+		*/
+		
+		System.out.println(toString(list));
+	}
+
+	static String toString(MyList list) {
+		
+		/*
+		String str;
+		str = "[";
+		for(int i = 0 ; i < list.size(); i++) {
+			str += ( i > 0 ? ", "+list.get(i) : list.get(i)); 
+		}
+		str += "]";
+		return str;
+		*/
+		
+		String str = "";
+		for(int i = 0 ; i < list.size(); i++ ) {
+			str += (i > 0) ? ", "+list.get(i) : list.get(i);
+		}
+		return String.format("[%s]", str);
 	}
 }
 
@@ -44,35 +83,33 @@ class MyList {
 	}
 
 	void add(int num) {
-		/*
-		 * int[] arrTemp = new int[list.length + 1]; for (int i = 0; i < list.length;
-		 * i++) { arrTemp[i] = list[i]; }
-		 * 
-		 * arrTemp[list.length] = num; list = arrTemp;
-		 */
 		add(list.length, num);
 	}
 
 	void add(int index, int num) {
 		int[] arrTemp = new int[list.length + 1];
-		/*
+
 		for (int i = 0; i < list.length; i++) {
+			arrTemp[(i < index) ? i : i + 1] = list[i];
+		}
+
+		arrTemp[index] = num;
+		list = arrTemp;
+	}
+
+	void addAll(int index, int[] num) {
+		int[] arrTemp = new int[list.length + num.length];
+		int index2 = num.length + index;
+		for (int i = 0; i < arrTemp.length; i++) {
 			if (i < index) {
 				arrTemp[i] = list[i];
+			} else if (i >= index && i < index2) {
+				arrTemp[i] = num[i - index];
 			} else {
-				arrTemp[i + 1] = list[i];
-			}
-		}*/
-		
-		
-		if (list.length != 0) {
-			for (int i = 0; i < arrTemp.length; i++) {
-				arrTemp[i] = i < index ? list[i] : list[i - 1];
+				arrTemp[i] = list[i - num.length];
 			}
 		}
-	
-		
-		arrTemp[index] = num;
+
 		list = arrTemp;
 	}
 
@@ -87,7 +124,7 @@ class MyList {
 	int remove(int index) {
 		int[] arrTemp = new int[list.length - 1];
 		for (int i = 0; i < arrTemp.length; i++) {
-			arrTemp[i] = (i >= index) ? list[i + 1] : list[i];
+			arrTemp[i] = list[i < index ? i : i + 1];
 		}
 		int delVal = list[index];
 		list = arrTemp;
