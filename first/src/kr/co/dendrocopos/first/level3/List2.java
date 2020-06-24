@@ -10,7 +10,7 @@ public class List2 {
 		list.add(3);
 		list.add(10);
 		
-		list.add(2,11);
+		list.add(55,11);
 		
 		list.remove(list.size()-1);
 		list.remove(list.size()-1);
