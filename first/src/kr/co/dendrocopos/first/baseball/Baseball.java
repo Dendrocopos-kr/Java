@@ -12,9 +12,9 @@ public class Baseball {
 	public void setBalls(int balls) {	this.balls = balls;}
 	
 	// 입력할 숫자 범위
-	private int Range; 
-	public int getRange() {return Range;}
-	public void setRange(int Range) {	this.Range = Range;}
+	private int range; 
+	public int getRange() {return range;}
+	public void setRange(int range) {	this.range = range;}
 	
 	// 변경할 공 개수
 	private int changeBaseballs;
@@ -50,7 +50,7 @@ public class Baseball {
 	public void setTry(int Try) {this.Try = Try;}
 
 	// 스캔 객체 가져오기위한 선언.
-	private Scanner scan; 
+	private Scanner scan = new Scanner(System.in);; 
 
 	// 생성자
 	Baseball() { // 기본생성자 ( 공3, 1~9범위 기본셋팅)
@@ -58,10 +58,9 @@ public class Baseball {
 	}
 	
 	// 입력받은 받은 공 개수와 범위 저장, scan 생성
-	private Baseball(int balls, int Range) { 
+	private Baseball(int balls, int range) { 
 		this.balls = balls;
-		this.Range = Range;
-		scan = new Scanner(System.in);
+		this.range = range;
 	}
 
 	// 공통 사항
@@ -76,26 +75,22 @@ public class Baseball {
 
 		if (changeBaseballs < 1 || changeRange <= changeBaseballs) {
 			System.out.println("설정 오류로 기본셋팅으로 시작합니다.");
-			System.out.printf("맞출 숫자 %d개, 범위 1~%d 입니다.\n", balls, Range);
 		} else {
-			System.out.printf("맞출 숫자 %d개, 범위 1~%d 입니다.\n", changeBaseballs, changeRange);
 			balls = changeBaseballs;
-			Range = changeRange;
+			range = changeRange;
 		}
 		arrBallNumber = new int[balls];
 		arrThrowNumber = new int[balls];
+		System.out.printf("맞출 숫자 %d개, 범위 1~%d 입니다.\n", balls, range);
 	}
 
 	private void printStartGame() { // 시작문구 출력
 		System.out.printf("------- %d 숫자 야구게임 ------- \n", balls);
 	}
 	
-
 	private void suffleBallNumber() { // 숫자 섞기 = 값 단위로 하나씩 변경
-		int maxRandomNumber = Range;
 		for (int i = 0; i < balls; i++) {
-
-			arrBallNumber[i] = (int) (Math.random() * maxRandomNumber) + 1;
+			arrBallNumber[i] = (int) (Math.random() * range) + 1;
 			for (int j = 0; j < i; j++) {
 				if (arrBallNumber[i] == arrBallNumber[j]) {
 					i--;
@@ -131,11 +126,11 @@ public class Baseball {
 		nOut = balls - nStrike - nBall;
 		System.out.println("S: " + nStrike + "/ B:" + nBall + "/ O: " + nOut + "\n");
 
-		return (nStrike == balls) ? true : false;
+		return (nStrike == balls) ? false : true;
 	}
 
 	public void throwNumber() { // 숫자 입력 받기 한개씩
-		System.out.printf("숫자 %d개를 입력하세요.", balls);
+		System.out.printf("숫자 %d개를 입력하세요.:", balls);
 		for (int i = 0; i < balls; i++) {
 			arrThrowNumber[i] = rangeCheck(scan.nextInt());
 		}
@@ -143,16 +138,17 @@ public class Baseball {
 	
 	private  int rangeCheck(int insertNumber) { // 범위 밖의 숫자 입력시
 		while (true) {
-			if (insertNumber >= 1 && insertNumber <= Range) {
+			if (insertNumber >= 1 && insertNumber <= range) {
 				return insertNumber;
 			} else {
-				System.out.printf("입력값 : %d, 범위를 벗어났습니다. 범위( 1~%d )\n다시 입력해주세요. : ", insertNumber,Range);
+				System.out.printf("입력값 : %d, 범위를 벗어났습니다. 범위( 1~%d )\n다시 입력해주세요. : ", insertNumber,range);
 				insertNumber = scan.nextInt();
 			}
 		}
 	}
 
 	public void release() { // 정답출력, scan 닫기
+		
 		System.out.printf("도전횟수 : %d \n정답 : ", Try);
 		System.out.println(Arrays.toString(arrBallNumber));
 		scan.close();

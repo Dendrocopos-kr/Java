@@ -7,13 +7,12 @@ public class Game {
 		Baseball BaseBallGame = new Baseball();
 				
 		BaseBallGame.initialization();
+		
 		//업데이트
-		while(true) {
+
+		do {
 			BaseBallGame.throwNumber();
-			if(BaseBallGame.checkingSBO()){
-				break;
-			}
-		}
+		}while(BaseBallGame.checkingSBO());
 		
 		//종료
 		BaseBallGame.release();		
