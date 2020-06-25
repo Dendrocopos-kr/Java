@@ -2,20 +2,15 @@ package BaseBall_test;
 
 public class Myball {
 	private int[] rArr;
-	private int range;
 
 	Myball() {
-
+		init();
 	}
 
-	Myball(int balls, int range) {
-		init(balls, range);
-	}
 
-	private void init(int balls, int range) {
+	private void init() {
 		//scan = new Scanner(System.in);
-		rArr = new int[balls];
-		this.range = range;
+		rArr = new int[mainThread.balls];
 	}
 
 	void setNumbers() {
@@ -23,7 +18,7 @@ public class Myball {
 		for (int i = 0; i < rArr.length; i++) {
 			System.out.printf("%d번째 숫자: ",i+1);
 			
-			rArr[i] = Checker.checkRange(range);
+			rArr[i] = Checker.checkRange(mainThread.range);
 			
 			for (int j = 0; j < i; j++) {
 				if (rArr[i] == rArr[j]) {

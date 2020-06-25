@@ -26,19 +26,10 @@ public class Checker {
 
 		return (nStrike == balls) ? false : true;
 	}
-	/*
-	public static boolean checkRange(int range, int val) {
-		if (val < 1 || val > range) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-	 */
 	
 	public static int checkRange(int range) {
 		while(true) {
-			int val = checkingNumber();
+			int val = checkNumber();
 			if (val < 1 || val > range) {
 				Message.getMessage(3);
 			} else {
@@ -48,7 +39,7 @@ public class Checker {
 	}
 
 	
-	public static int checkingNumber() {
+	public static int checkNumber() {
 		int result = 0;
 		while(true) {
 			String val = scan.nextLine();
@@ -62,5 +53,16 @@ public class Checker {
 			break;
 		}
 		return result;
+	}
+	
+	public static void checkChangeNumer(int newBalls, int newRange)
+	{
+		if (newBalls < 1 || newRange <= newBalls) {
+			Message.getMessage(1);
+		} else {
+			mainThread.balls = newBalls;
+			mainThread.range = newRange;
+		}
+		Message.getMessage(2);
 	}
 }
