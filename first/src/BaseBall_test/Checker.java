@@ -1,6 +1,10 @@
 package BaseBall_test;
 
+import java.util.Scanner;
+
 public class Checker {
+	private static Scanner scan = new Scanner(System.in);
+	
 	public static boolean check(int balls, Baseball b, Myball mb) {
 		int nBall = 0;
 		int nStrike = 0;
@@ -22,13 +26,41 @@ public class Checker {
 
 		return (nStrike == balls) ? false : true;
 	}
-
+	/*
 	public static boolean checkRange(int range, int val) {
 		if (val < 1 || val > range) {
-			System.out.printf("입력값 : %d, 범위를 벗어났습니다. 범위( 1~%d )\n다시 입력해주세요. : ", val, range);
 			return true;
 		} else {
 			return false;
 		}
+	}
+	 */
+	
+	public static int checkRange(int range) {
+		while(true) {
+			int val = checkingNumber();
+			if (val < 1 || val > range) {
+				Message.getMessage(3);
+			} else {
+				return val;
+			}
+		}
+	}
+
+	
+	public static int checkingNumber() {
+		int result = 0;
+		while(true) {
+			String val = scan.nextLine();
+			try {
+				result = Integer.parseInt(val);				
+			}catch(Exception e) {
+				Message.getMessage(5);
+				result = 0;
+				continue;
+			}
+			break;
+		}
+		return result;
 	}
 }

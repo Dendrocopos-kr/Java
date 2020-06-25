@@ -3,40 +3,57 @@ package BaseBall_test;
 import java.util.Scanner;
 
 public class mainThread {
-	private int balls;
-	private int changeBalls;
-	void setballs(int balls) {	this.balls = balls;	}
-	int getballs() {	return this.balls;	}
+	static int balls;
+	private static int changeBalls;
+	//void setballs(int balls) {	mainThread.balls = balls;	}
+	//int getballs() {	return mainThread.balls;	}
 
-	private int range;
-	private int changeRange;
-	void setRange(int range) {	this.range = range;	}
-	int getRange() {	return this.range;	}
+	static int range;
+	private static int changeRange;
+	//void setRange(int range) {	mainThread.range = range;	}
+	//int getRange() {	return mainThread.range;	}
 
 	Scanner scan = new Scanner(System.in);
-
+	private Baseball ball;
+	private Myball myBall;
+	
 	mainThread() {
 		init(3,9);
 		checkingSet();	
 	}
 	
-	void init(int balls, int range) {
-		this.balls = balls;
-		this.range = range;
-		System.out.println("숫자 야구게임을 시작합니다. \n\n맞출 숫자의 갯수와 범위를 정해주세요");
-		System.out.print("맞출숫자 < 맞출범위 :");
-		changeBalls = scan.nextInt();
-		changeRange = scan.nextInt();
+	private void init(int balls, int range) {
+		mainThread.balls = balls;
+		mainThread.range = range;
+		
+		Message.getMessage(0);
+		Message.getMessage(6);
+		changeBalls = Checker.checkingNumber();
+		Message.getMessage(7);
+		changeRange = Checker.checkingNumber();
+		
+		ball = new Baseball(balls, range);
+		myBall = new Myball(balls, range);
 	}
 	
 	private void checkingSet() { // 범위와 공 개수 확인 ( 공 0개이하 or 공개수 >= 범위면 초기값 공3,범위1~9 )
 
 		if (changeBalls < 1 || changeRange <= changeBalls) {
-			System.out.println("설정 오류로 기본셋팅으로 시작합니다.");
+			Message.getMessage(1);
 		} else {
 			balls = changeBalls;
 			range = changeRange;
 		}
-		System.out.printf("맞출 숫자 %d개, 범위 1~%d 입니다.\n", balls, range);
+		Message.getMessage(2);		
 	}
+	
+	public void loopGame() {
+		
+		do {
+			myBall.setNumbers();
+		} while (Checker.check(mainThread.balls, ball, myBall));
+		
+		Message.getMessage(10);
+	}
+	
 }
