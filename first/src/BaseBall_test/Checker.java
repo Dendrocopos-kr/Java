@@ -5,13 +5,13 @@ import java.util.Scanner;
 public class Checker {
 	private static Scanner scan = new Scanner(System.in);
 	
-	public static boolean check(int balls, Baseball b, Myball mb) {
+	public static boolean check( Baseball b, Myball mb) {
 		int nBall = 0;
 		int nStrike = 0;
 		int nOut;
 		// Try++;
-		for (int i = 0; i < balls; i++) {
-			for (int j = 0; j < balls; j++) {
+		for (int i = 0; i < mainThread.balls; i++) {
+			for (int j = 0; j < mainThread.balls; j++) {
 				if (b.get(i) == mb.get(j)) {
 					if (i == j) {
 						nStrike++;
@@ -21,16 +21,16 @@ public class Checker {
 				}
 			}
 		}
-		nOut = balls - nStrike - nBall;
+		nOut = mainThread.balls - nStrike - nBall;
 		System.out.println("S: " + nStrike + "/ B:" + nBall + "/ O: " + nOut + "\n");
 
-		return (nStrike == balls) ? false : true;
+		return nStrike != mainThread.balls;
 	}
 	
-	public static int checkRange(int range) {
+	public static int checkRangeAddNumber() {
 		while(true) {
-			int val = checkNumber();
-			if (val < 1 || val > range) {
+			int val = checkAddNumber();
+			if (val < 1 || val > mainThread.range) {
 				Message.getMessage(3);
 			} else {
 				return val;
@@ -39,7 +39,7 @@ public class Checker {
 	}
 
 	
-	public static int checkNumber() {
+	public static int checkAddNumber() {
 		int result = 0;
 		while(true) {
 			String val = scan.nextLine();
@@ -54,6 +54,28 @@ public class Checker {
 		}
 		return result;
 	}
+	
+	public static boolean checkIsNumber(String str) {
+		if( str.length() != 0){
+			try {
+				int result = Integer.parseInt(str);				
+				return false;
+			}catch(Exception e) {
+				Message.getMessage(5);
+			}
+		}
+		return true;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public static void checkChangeNumer(int newBalls, int newRange)
 	{

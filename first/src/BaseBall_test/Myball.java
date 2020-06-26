@@ -18,7 +18,7 @@ public class Myball {
 		for (int i = 0; i < rArr.length; i++) {
 			System.out.printf("%d번째 숫자: ",i+1);
 			
-			rArr[i] = Checker.checkRange(mainThread.range);
+			rArr[i] = Checker.checkRangeAddNumber();
 			
 			for (int j = 0; j < i; j++) {
 				if (rArr[i] == rArr[j]) {

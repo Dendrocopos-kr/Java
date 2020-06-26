@@ -19,10 +19,10 @@ public class Message {
 			System.out.printf("중복입니다.\n다시 입력해주세요. : ");
 			break;
 		case 5:
-			System.out.print("숫자만 입력하세요. :");
+			System.out.println("숫자만 입력하세요.");
 			break;
 		case 6:
-			System.out.print("맞출 갯수를 정해주세요 (기본값 3):");
+			System.out.print("맞출 갯수를 정해주세요 (1 ~ 입력값, 기본값 3):");
 			break;
 		case 7:
 			System.out.print("맞출 범위를 지정해주세요 (1 ~ 입력값, 기본값 9) :");
