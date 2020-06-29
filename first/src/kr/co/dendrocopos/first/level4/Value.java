@@ -8,6 +8,13 @@ public class Value {
 	
 	@Override
 	public boolean equals(Object obj) {
-		return obj.equals(val);
+		Value t = (Value)obj;
+		//return val == t.val;
+		return val == t.getVal();
 	}
 }
+
+/*
+ object class는 모든 형태로 변환이 가능한가?
+ 간단한 메소드들도 object로 만들면 모두 호환이 가능한가?
+*/
