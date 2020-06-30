@@ -9,8 +9,14 @@ public class Value {
 	@Override
 	public boolean equals(Object obj) {
 		Value t = (Value)obj;
-		//return val == t.val;
+		//return val == t.val; // 같은 Class로 비교하기에 private 라도 접근가능
 		return val == t.getVal();
+	}
+	
+	@Override
+	public String toString() {
+		//return String.valueOf(val);
+		return String.format("%,d", val); // 추천
 	}
 }
 
