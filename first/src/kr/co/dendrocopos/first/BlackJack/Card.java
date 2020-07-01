@@ -54,7 +54,7 @@ public class Card {
 		Collections.shuffle(spades);
 		Collections.shuffle(diamonds);
 		Collections.shuffle(clubs);
-		
+
 		card.add(hearts);
 		card.add(spades);
 		card.add(diamonds);
@@ -64,20 +64,20 @@ public class Card {
 	public String[] drawCard() {
 		// 카드 리스트에서 빼기
 		String result[] = new String[2];
-		int random = (int)(Math.random()*4);
+		int random = (int) (Math.random() * 4);
 		result[0] = String.format("%d", random);
 		ArrayList<String> randomParttenList = card.get(random);
-		result[1] = randomParttenList.get(randomParttenList.size()-1);
-		
-		randomParttenList.remove(randomParttenList.size()-1);
+		result[1] = randomParttenList.get(randomParttenList.size() - 1);
+
+		randomParttenList.remove(randomParttenList.size() - 1);
 		return result;
 	}
-	
+
 	public void viewCard() {
 		String str = "";
 		for (int i = 0; i < 4; i++) {
 			ArrayList<String> arrayList = card.get(i);
-			switch(i) {
+			switch (i) {
 			case 0:
 				str = "Hearts ";
 				break;
@@ -91,7 +91,7 @@ public class Card {
 				str = "Clubs ";
 				break;
 			}
-			System.out.printf("%10s : ",str );
+			System.out.printf("%10s : ", str);
 			System.out.println(arrayList);
 		}
 	}

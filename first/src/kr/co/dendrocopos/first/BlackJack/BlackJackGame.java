@@ -6,41 +6,25 @@ public class BlackJackGame {
 	public static void main(String[] args) {
 		Card card = new Card();
 		card.initialization();
-		//card.viewCard();
+		// card.viewCard();
 
-		Player player = new Player("player");
-		Player dealer = new Player("dealer");
+		Player player = new Player("player", false);
+		Player dealer = new Player("dealer", true);
 
-		player.setCard(card);
-		dealer.setCard(card);
-		player.viewCard();
-		dealer.viewCard();
-		
-		System.out.println("---------------------------------------------------");
-		//card.viewCard();
-
-		player.setCard(card);
-		dealer.setCard(card);
-		player.viewCard();
-		dealer.viewCard();
-
-		System.out.println("---------------------------------------------------");
-		//card.viewCard();
-
-		player.setCard(card);
-		dealer.setCard(card);
-		player.viewCard();
-		dealer.viewCard();
-
-		System.out.println("---------------------------------------------------");
-		//card.viewCard();
-
-		player.setCard(card);
-		dealer.setCard(card);
-		player.viewCard();
-		dealer.viewCard();
-
-		System.out.println("---------------------------------------------------");
-		//card.viewCard();
+		do {
+			if (dealer.opened()) {
+				dealer.setCard(card);
+				dealer.viewCard();
+			}
+			if (Checker.checkStop() && player.opened()) {
+				player.setCard(card);
+				player.viewCard();
+			}else {
+				break;
+			}
+		} while (true);
+		dealer.viewAllCard();
+		player.viewAllCard();
+		Checker.scan.close();
 	}
 }
