@@ -10,19 +10,46 @@ public class BlackJackGame {
 
 		Player player = new Player("player", false);
 		Player dealer = new Player("dealer", true);
+		player.setCard(card);
+		player.setCard(card);
+		dealer.setCard(card);
+		dealer.setCard(card);
+		dealer.viewCard();
+		player.viewCard();
 
-		do {
-			if (dealer.opened()) {
-				dealer.setCard(card);
-				dealer.viewCard();
-			}
-			if (Checker.checkStop() && player.opened()) {
+		boolean palyerturn = Checker.checkStop(player);
+		boolean dealerturn = Checker.checkStop(dealer);
+
+		while (true) {
+			if (palyerturn) {
+				player.setGameTurn(palyerturn);
+			} else {
 				player.setCard(card);
-				player.viewCard();
-			}else {
+				if (player.isBusted()) {
+					palyerturn = true;
+				} else {
+					player.viewCard();
+					palyerturn = Checker.checkStop(player);
+				}
+			}
+
+			if (dealerturn) {
+				dealer.setGameTurn(dealerturn);
+			} else {
+				dealer.setCard(card);
+				if (dealer.isBusted()) {
+					dealerturn = true;
+				} else {
+					dealer.viewCard();
+					dealerturn = Checker.checkStop(dealer);
+				}
+			}
+
+			if (palyerturn && dealerturn) {
 				break;
 			}
-		} while (true);
+
+		}
 		dealer.viewAllCard();
 		player.viewAllCard();
 		Checker.scan.close();
