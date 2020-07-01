@@ -68,10 +68,11 @@ public class Card {
 		result[0] = String.format("%d", random);
 		ArrayList<String> randomParttenList = card.get(random);
 		result[1] = randomParttenList.get(randomParttenList.size()-1);
+		
 		randomParttenList.remove(randomParttenList.size()-1);
 		return result;
 	}
-
+	
 	public void viewCard() {
 		String str = "";
 		for (int i = 0; i < 4; i++) {
