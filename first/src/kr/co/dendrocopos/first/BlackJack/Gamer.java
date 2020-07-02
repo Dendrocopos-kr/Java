@@ -36,11 +36,16 @@ public class Gamer implements Player {
 
 	@Override
 	public void viewCard() {
-		str = String.format("%s\n", "+---------------------------------------------------+");
+		str = "";
 		str += String.format(
-				"|%13s%3s%35s|\n|%51s|\n|%4s%46d|\n"
-						+ "+---------------------------------------------------+\n",
-				name, " : ", " ", Card, "합계: ", Checker.blackJeck(this));
+				"+----------------------------------------------+\n"
+				+ "|%13s%3s%30s|\n"
+				+ "|%46s|\n"
+				+ "|%4s%34d%7s|\n"
+				+ "+----------------------------------------------+\n",
+				name, " : ", " ",
+				Card,
+				"합계: ", Checker.blackJeck(this),isBusted()? "(Bust!)" : " ");
 		System.out.println(str);
 
 	}

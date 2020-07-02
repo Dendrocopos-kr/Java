@@ -37,14 +37,15 @@ public class Dealer implements Player {
 	@Override
 	public void viewCard() {
 		String temp = "";
-		str = String.format("%s\n", "+---------------------------------------------------+");
-		str += String.format("|%13s%3s%35s|\n", name, " : ", " ");
-		str += "|";
+		str = String.format("+----------------------------------------------+\n|%13s%3s%30s|\n|", name, " : ", " ");
 		for (int i = 0; i < Card.size(); i++) {
 			temp += (i > 0) ? ", Blind" : "[Blind";
 		}
-		str += String.format("%50s]|\n", temp);
-		str += String.format("|%4s%46s|\n+---------------------------------------------------+\n", "합계: ", "?");
+		str += String.format("%45s]|\n"
+				+ "|%4s%34s%7s|\n"
+				+ "+----------------------------------------------+\n",
+				temp,
+				"합계: ", "?",isBusted()? "(Bust!)" : " ");
 		System.out.println(str);
 
 	}

@@ -111,9 +111,8 @@ public class Checker {
 
 	public static void playerAllCard(Player player) {
 		String str = String.format(
-				"+---------------------------------------------------+\n" + "|%13s%3s%35s|\n" + "|%51s|\n"
-						+ "|%4s%46d|\n" + "+---------------------------------------------------+\n",
-				player.getName(), " : ", " ", player.getPlayerCard(), "합계: ", Checker.blackJeck(player));
+				"+----------------------------------------------+\n|%13s%3s%30s|\n|%46s|\n|%4s%34d%7s|\n+----------------------------------------------+\n",
+				player.getName(), " : ", " ", player.getPlayerCard(), "합계: ", Checker.blackJeck(player),player.isBusted()? "(Bust!)" : " ");
 		System.out.println(str);
 	}
 
