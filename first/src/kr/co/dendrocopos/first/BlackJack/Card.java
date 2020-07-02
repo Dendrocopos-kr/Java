@@ -50,6 +50,7 @@ public class Card {
 			diamonds.add(str);
 			clubs.add(str);
 		}
+		
 		Collections.shuffle(hearts);
 		Collections.shuffle(spades);
 		Collections.shuffle(diamonds);
@@ -63,13 +64,13 @@ public class Card {
 
 	public String[] drawCard() {
 		// 카드 리스트에서 빼기
-		String result[] = new String[2];
-		int random = (int) (Math.random() * 4);
-		result[0] = String.format("%d", random);
-		ArrayList<String> randomParttenList = card.get(random);
-		result[1] = randomParttenList.get(randomParttenList.size() - 1);
+		String result[] = new String[2]; // 무늬와 값을 담을 배열 생성
+		int random = (int) (Math.random() * 4); // 무늬 패턴 랜덤 선정
+		result[0] = String.format("%d", random); // 무늬 숫자화 
+		ArrayList<String> randomParttenList = card.get(random); // 숫자화된 무늬의 리스트 가져오기
+		result[1] = randomParttenList.get(randomParttenList.size() - 1); // 맨 뒤값 가져오기
 
-		randomParttenList.remove(randomParttenList.size() - 1);
+		randomParttenList.remove(randomParttenList.size() - 1); // 맨 뒤값 삭제
 		return result;
 	}
 
@@ -79,19 +80,19 @@ public class Card {
 			ArrayList<String> arrayList = card.get(i);
 			switch (i) {
 			case 0:
-				str = "Hearts ";
+				str = "♥";
 				break;
 			case 1:
-				str = "Spades ";
+				str = "♠ ";
 				break;
 			case 2:
-				str = "Diamonds ";
+				str = "◆ ";
 				break;
 			case 3:
-				str = "Clubs ";
+				str = "♣ ";
 				break;
 			}
-			System.out.printf("%10s : ", str);
+			System.out.printf("%s \t :", str);
 			System.out.println(arrayList);
 		}
 	}

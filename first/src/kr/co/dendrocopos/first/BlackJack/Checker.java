@@ -7,7 +7,7 @@ public class Checker {
 	static Scanner scan = new Scanner(System.in);
 
 	public static boolean checkStop(Player player) {
-		if (player.DEALER) {
+		if (player instanceof Dealer) {
 			int checker = Checker.blackJeck(player);
 			if (checker <= 16) {
 				return false;
@@ -23,7 +23,6 @@ public class Checker {
 			} else {
 				return true;
 			}
-
 		}
 
 	}
@@ -62,25 +61,83 @@ public class Checker {
 	}
 
 	public static String aceCard(String card, Player player) {
+		int checker = Checker.blackJeck(player);
 		if ("A".equals(card)) {
-			if (player.DEALER) {
-				int checker = Checker.blackJeck(player);
+			if (player instanceof Dealer) {
 				if (checker <= 10) {
 					return "A";
 				} else {
 					return "1";
 				}
 			} else {
-				String tmp = String.format("%46s", "A를 11로 쓰실려면 Y, A를 1로 쓰실려면 N 입력해주세요.");
-				System.out.print(tmp);
-				String intput = scan.next();
-				if (("Y").equals(intput) || ("y").equals(intput)) {
-					return "A";
-				} else {
+				if (checker <= 10) {
+					String tmp = String.format("%46s", "A를 11로 쓰실려면 Y, A를 1로 쓰실려면 N 입력해주세요.");
+					System.out.print(tmp);
+					String intput = scan.next();
+					if (("Y").equals(intput) || ("y").equals(intput)) {
+						return "A";
+					} else {
+						return "1";
+					}
+				}else {
 					return "1";
 				}
+
 			}
 		}
 		return card;
+
 	}
+
+	public static void setCard(Card card, Player player) {
+		String[] drawedCard = card.drawCard();
+		switch (drawedCard[0]) {
+		case "0":
+			drawedCard[0] = "♥ ";
+			break;
+		case "1":
+			drawedCard[0] = "♠ ";
+			break;
+		case "2":
+			drawedCard[0] = "◆ ";
+			break;
+		case "3":
+			drawedCard[0] = "♣ ";
+			break;
+		}
+		drawedCard[1] = Checker.aceCard(drawedCard[1], player);
+		player.getPlayerCard().add(drawedCard[0] + drawedCard[1]);
+	}
+
+	public static void playerAllCard(Player player) {
+		String str = String.format(
+				"+---------------------------------------------------+\n" + "|%13s%3s%35s|\n" + "|%51s|\n"
+						+ "|%4s%46d|\n" + "+---------------------------------------------------+\n",
+				player.getName(), " : ", " ", player.getPlayerCard(), "합계: ", Checker.blackJeck(player));
+		System.out.println(str);
+	}
+
+	public static String Winner(Player gamer, Player dealer) {
+		int gamerSum = Checker.blackJeck(gamer);
+		int dealerSum = Checker.blackJeck(dealer);
+		boolean gamerBusted = gamer.isBusted();
+		boolean dealerBusted = dealer.isBusted();
+
+		if (gamerBusted) {
+			return "졌습니다";
+		} else if (dealerBusted) {
+			return "이겼습니다";
+		} else {
+			if ((gamerSum == dealerSum)) {
+				return "비겼습니다";
+			} else {
+				if (Math.abs((gamerSum - 21)) < Math.abs(dealerSum - 21)) {
+					return "이겼습니다";
+				} else {
+					return "졌습니다";
+				}
+			}
+		}
+	}
+
 }
