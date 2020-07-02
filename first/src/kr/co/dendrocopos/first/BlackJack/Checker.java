@@ -15,7 +15,7 @@ public class Checker {
 				return true;
 			}
 		} else {
-			String tmp = String.format("%50s", "받으시겠습니까? (Y/N) :");
+			String tmp = String.format("%46s", "받으시겠습니까? (Y/N) :");
 			System.out.print(tmp);
 			String str = scan.next();
 			if (("Y").equals(str) || ("y").equals(str)) {
@@ -111,16 +111,22 @@ public class Checker {
 
 	public static void playerAllCard(Player player) {
 		String str = String.format(
-				"+----------------------------------------------+\n|%13s%3s%30s|\n|%46s|\n|%4s%34d%7s|\n+----------------------------------------------+\n",
-				player.getName(), " : ", " ", player.getPlayerCard(), "합계: ", Checker.blackJeck(player),player.isBusted()? "(Bust!)" : " ");
+				  "+----------------------------------------------+\n"
+				+ "|%13s%3s%30s|\n"
+				+ "|%46s|\n"
+				+ "|%6s%30d%10s|\n"
+				+ "+----------------------------------------------+\n",
+				player.getName(), " : ", " ",
+				player.getPlayerCard(),
+				"합계: ", Checker.blackJeck(player),Checker.isBusted(player)? "(Bust!)" : " ");
 		System.out.println(str);
 	}
 
 	public static String Winner(Player gamer, Player dealer) {
 		int gamerSum = Checker.blackJeck(gamer);
 		int dealerSum = Checker.blackJeck(dealer);
-		boolean gamerBusted = gamer.isBusted();
-		boolean dealerBusted = dealer.isBusted();
+		boolean gamerBusted = Checker.isBusted(gamer);
+		boolean dealerBusted = Checker.isBusted(dealer);
 
 		if (gamerBusted) {
 			return "졌습니다";
@@ -136,6 +142,14 @@ public class Checker {
 					return "졌습니다";
 				}
 			}
+		}
+	}
+	public static boolean isBusted(Player player) {
+		int sumCard = Checker.blackJeck(player);
+		if (sumCard <= 21) {
+			return false;
+		} else {
+			return true;
 		}
 	}
 

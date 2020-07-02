@@ -7,7 +7,6 @@ public interface Player {
 	public void setGameTurn(boolean gameTurn);
 	public ArrayList<String> getPlayerCard();
 	public void viewCard();
-	public boolean isBusted();
 	public String getName();
 	
 }

@@ -30,7 +30,7 @@ public class BlackJackGame {
 				Checker.setCard(card,gamer);
 				gamer.viewCard();
 				//card.viewCard();
-				if (gamer.isBusted()) {
+				if (Checker.isBusted(gamer)) {
 					break;
 				} else {
 					palyerturn = Checker.checkStop(gamer);
@@ -44,7 +44,7 @@ public class BlackJackGame {
 				Checker.setCard(card,dealer);
 				dealer.viewCard();
 				//card.viewCard();
-				if (dealer.isBusted()) {
+				if (Checker.isBusted(dealer)) {
 					break;
 				} else {
 					dealerturn = Checker.checkStop(dealer);
@@ -55,7 +55,7 @@ public class BlackJackGame {
 			}
 		}
 		System.out.println();
-		System.out.println("---------------------결과창-----------------------");
+		System.out.println("--♥-◆-♣-♠-♥-◆-♣-♠-♥---결과창---♠-♥-◆-♣-♠-♥-◆-♣-♠--");
 		Checker.playerAllCard(gamer);
 		Checker.playerAllCard(dealer);
 		

@@ -6,7 +6,6 @@ public class Gamer implements Player {
 
 	private String name;
 	private ArrayList<String> Card = new ArrayList<String>();
-	private int sumCard;
 	private String str;
 	private boolean gameTurn;
 
@@ -41,23 +40,13 @@ public class Gamer implements Player {
 				"+----------------------------------------------+\n"
 				+ "|%13s%3s%30s|\n"
 				+ "|%46s|\n"
-				+ "|%4s%34d%7s|\n"
+				+ "|%6s%30d%10s|\n"
 				+ "+----------------------------------------------+\n",
 				name, " : ", " ",
 				Card,
-				"합계: ", Checker.blackJeck(this),isBusted()? "(Bust!)" : " ");
+				"합계: ", Checker.blackJeck(this),Checker.isBusted(this)? "(Bust!)" : " ");
 		System.out.println(str);
 
-	}
-
-	@Override
-	public boolean isBusted() {
-		sumCard = Checker.blackJeck(this);
-		if (sumCard <= 21) {
-			return false;
-		} else {
-			return true;
-		}
 	}
 
 }
