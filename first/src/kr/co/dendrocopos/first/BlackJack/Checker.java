@@ -6,28 +6,46 @@ import java.util.Scanner;
 public class Checker {
 	static Scanner scan = new Scanner(System.in);
 
+	/*
 	public static boolean checkStop(Player player) {
 		if (player instanceof Dealer) {
-			int checker = Checker.blackJeck(player);
+			return checkDealerMoreDraw(player);
+		} else {
+			return checkPlayerMoreDraw(player);
+		}
+
+	}
+	 */
+	public static boolean checkDealerMoreDraw(Player player) {
+		if (player instanceof Dealer) {
+			int checker = Checker.myCardSum(player);
 			if (checker <= 16) {
 				return false;
 			} else {
 				return true;
 			}
-		} else {
-			String tmp = String.format("%46s", "받으시겠습니까? (Y/N) :");
-			System.out.print(tmp);
-			String str = scan.next();
-			if (("Y").equals(str) || ("y").equals(str)) {
-				return false;
-			} else {
-				return true;
-			}
 		}
-
+		/*
+		else {
+			System.out.println("Dealer가 아닙니다.");
+		}
+		*/
+		return true;
 	}
 
-	public static int blackJeck(Player player) {
+	public static boolean checkPlayerMoreDraw(Player player) {
+		int checker = Checker.myCardSum(player);
+		String tmp = String.format("%46s", "받으시겠습니까? (Y/N) :");
+		System.out.print(tmp);
+		String str = scan.next();
+		if ((("Y").equals(str) || ("y").equals(str)) && checker < 21) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public static int myCardSum(Player player) {
 		int sum = 0;
 		ArrayList<String> cardList = player.getPlayerCard();
 		for (int i = 0; i < cardList.size(); i++) {
@@ -60,9 +78,9 @@ public class Checker {
 		return sum;
 	}
 
-	public static String aceCard(String card, Player player) {
-		int checker = Checker.blackJeck(player);
-		if ("A".equals(card)) {
+	private static String aceCard(String deck, Player player) {
+		int checker = Checker.myCardSum(player);
+		if ("A".equals(deck)) {
 			if (player instanceof Dealer) {
 				if (checker <= 10) {
 					return "A";
@@ -76,21 +94,17 @@ public class Checker {
 					String intput = scan.next();
 					if (("Y").equals(intput) || ("y").equals(intput)) {
 						return "A";
-					} else {
-						return "1";
 					}
-				}else {
-					return "1";
 				}
-
+				return "1";
 			}
 		}
-		return card;
-
+		return deck;
 	}
-
-	public static void setCard(Card card, Player player) {
-		String[] drawedCard = card.drawCard();
+	
+	public static void setCard(Deck deck, Player player) {
+		System.out.println(player.getName() +" : 카드를 뽑습니다.");
+		String[] drawedCard = deck.drawCard();
 		switch (drawedCard[0]) {
 		case "0":
 			drawedCard[0] = "♥ ";
@@ -111,20 +125,16 @@ public class Checker {
 
 	public static void playerAllCard(Player player) {
 		String str = String.format(
-				  "+----------------------------------------------+\n"
-				+ "|%13s%3s%30s|\n"
-				+ "|%46s|\n"
-				+ "|%6s%30d%10s|\n"
-				+ "+----------------------------------------------+\n",
-				player.getName(), " : ", " ",
-				player.getPlayerCard(),
-				"합계: ", Checker.blackJeck(player),Checker.isBusted(player)? "(Bust!)" : " ");
+				"+----------------------------------------------+\n" + "|%13s%3s%30s|\n" + "|%46s|\n"
+						+ "|%6s%30d%10s|\n" + "+----------------------------------------------+\n",
+				player.getName(), " : ", " ", player.getPlayerCard(), "합계: ", Checker.myCardSum(player),
+				Checker.isBusted(player) ? "(Bust!)" : " ");
 		System.out.println(str);
 	}
 
 	public static String Winner(Player gamer, Player dealer) {
-		int gamerSum = Checker.blackJeck(gamer);
-		int dealerSum = Checker.blackJeck(dealer);
+		int gamerSum = Checker.myCardSum(gamer);
+		int dealerSum = Checker.myCardSum(dealer);
 		boolean gamerBusted = Checker.isBusted(gamer);
 		boolean dealerBusted = Checker.isBusted(dealer);
 
@@ -144,8 +154,9 @@ public class Checker {
 			}
 		}
 	}
+
 	public static boolean isBusted(Player player) {
-		int sumCard = Checker.blackJeck(player);
+		int sumCard = Checker.myCardSum(player);
 		if (sumCard <= 21) {
 			return false;
 		} else {

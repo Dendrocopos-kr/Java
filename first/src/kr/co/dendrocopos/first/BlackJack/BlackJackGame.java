@@ -2,65 +2,77 @@ package kr.co.dendrocopos.first.BlackJack;
 
 public class BlackJackGame {
 	public static void main(String[] args) {
-		System.out.printf("%46s","블랙잭을 시작합니다.\n");
-		Card card = new Card();
-		card.initialization();
-		
-		System.out.printf("%46s","카드 셋팅중...\n");
-
+		//시작준비
+		Deck deck = new Deck();
 		Player gamer = new Gamer("gamer");
 		Player dealer = new Dealer("dealer");
-		Checker.setCard(card,gamer);
-		Checker.setCard(card,dealer);
-		Checker.setCard(card,gamer);
-		Checker.setCard(card,dealer);
-		System.out.printf("%46s","카드 배분완료\n");
-		gamer.viewCard();
-		dealer.viewCard();
-		//card.viewCard();
+		
+		System.out.printf("%46s","블랙잭을 시작합니다.\n");
+				
+		// 기본셋팅
+		initialization(deck, gamer, dealer);
 
-		boolean palyerturn = Checker.checkStop(gamer);
-		boolean dealerturn = Checker.checkStop(dealer);
+		boolean palyerturn = Checker.checkPlayerMoreDraw(gamer);
+		boolean dealerturn = Checker.checkDealerMoreDraw(dealer);
 
+		// 게임 루프문
 		while (true) {
 			if (palyerturn) {
+				System.out.println("플레이어가 더 받지 않도록 합니다. (스테이) ");
 				gamer.setGameTurn(palyerturn);
 			} else {
-				System.out.printf("%46s\n","나의 턴");
-				Checker.setCard(card,gamer);
+				System.out.println("플레이어가 더 받습니다. (히트) ");
+				Checker.setCard(deck,gamer);
 				gamer.viewCard();
 				//card.viewCard();
 				if (Checker.isBusted(gamer)) {
 					break;
 				} else {
-					palyerturn = Checker.checkStop(gamer);
+					palyerturn = Checker.checkPlayerMoreDraw(gamer);
 				}
 			}
 
 			if (dealerturn) {
+				System.out.println("딜러가 더 받지 않도록 합니다. (스테이) ");
 				dealer.setGameTurn(dealerturn);
 			} else {
-				System.out.printf("%46s\n","딜러 턴");
-				Checker.setCard(card,dealer);
+				System.out.println("딜러가 더 받습니다. (히트) ");
+				Checker.setCard(deck,dealer);
 				dealer.viewCard();
 				//card.viewCard();
 				if (Checker.isBusted(dealer)) {
 					break;
 				} else {
-					dealerturn = Checker.checkStop(dealer);
+					dealerturn = Checker.checkDealerMoreDraw(dealer);
 				}
 			}
 			if (palyerturn && dealerturn) {
+				System.out.println("모두 받지 않으므로 카드를 공개합니다. (오픈) ");
 				break;
 			}
 		}
-		System.out.println();
-		System.out.println("--♥-◆-♣-♠-♥-◆-♣-♠-♥---결과창---♠-♥-◆-♣-♠-♥-◆-♣-♠--");
+		
+		System.out.println("\n--♥-◆-♣-♠-♥-◆-♣-♠-♥---결과창---♠-♥-◆-♣-♠-♥-◆-♣-♠--");
 		Checker.playerAllCard(gamer);
 		Checker.playerAllCard(dealer);
 		
 		System.out.println(Checker.Winner(gamer, dealer));
 		
 		Checker.scan.close();
+	}
+	
+	public static void initialization(Deck deck, Player player,Player dealer) {
+		System.out.printf("%46s","카드 셋팅중...\n");
+		//card.viewCard();
+		for(int i = 0 ; i < 2; i ++) {
+			Checker.setCard(deck,player);
+			player.viewCard();
+			Checker.setCard(deck,dealer);
+			dealer.viewCard();
+			//card.viewCard();
+		}
+		System.out.printf("%46s","카드 배분완료\n");
+		player.viewCard();
+		dealer.viewCard();
 	}
 }
