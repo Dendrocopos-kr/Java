@@ -44,7 +44,7 @@ public class Gamer implements Player {
 				+ "+----------------------------------------------+\n",
 				name, " : ", " ",
 				Card,
-				"합계: ", Checker.myCardSum(this),Checker.isBusted(this)? "(Bust!)" : " ");
+				"합계: ", Checker.myCardPoint(this),Checker.isBusted(this)? "(Bust!)" : " ");
 		System.out.println(str);
 
 	}

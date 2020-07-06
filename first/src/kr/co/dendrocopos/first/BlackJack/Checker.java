@@ -7,18 +7,15 @@ public class Checker {
 	static Scanner scan = new Scanner(System.in);
 
 	/*
-	public static boolean checkStop(Player player) {
-		if (player instanceof Dealer) {
-			return checkDealerMoreDraw(player);
-		} else {
-			return checkPlayerMoreDraw(player);
-		}
-
-	}
+	 * public static boolean checkStop(Player player) { if (player instanceof
+	 * Dealer) { return checkDealerMoreDraw(player); } else { return
+	 * checkPlayerMoreDraw(player); }
+	 * 
+	 * }
 	 */
 	public static boolean checkDealerMoreDraw(Player player) {
 		if (player instanceof Dealer) {
-			int checker = Checker.myCardSum(player);
+			int checker = Checker.myCardPoint(player);
 			if (checker <= 16) {
 				return false;
 			} else {
@@ -26,15 +23,13 @@ public class Checker {
 			}
 		}
 		/*
-		else {
-			System.out.println("Dealer가 아닙니다.");
-		}
-		*/
+		 * else { System.out.println("Dealer가 아닙니다."); }
+		 */
 		return true;
 	}
 
 	public static boolean checkPlayerMoreDraw(Player player) {
-		int checker = Checker.myCardSum(player);
+		int checker = Checker.myCardPoint(player);
 		String tmp = String.format("%46s", "받으시겠습니까? (Y/N) :");
 		System.out.print(tmp);
 		String str = scan.next();
@@ -45,41 +40,26 @@ public class Checker {
 		}
 	}
 
-	public static int myCardSum(Player player) {
-		int sum = 0;
+	public static int myCardPoint(Player player) {
+		int myPoint = 0;
 		ArrayList<String> cardList = player.getPlayerCard();
 		for (int i = 0; i < cardList.size(); i++) {
 			String[] str = cardList.get(i).split(" ");
 			switch (str[1]) {
-			case "1":
-				sum += 1;
-				break;
-			case "2":
-			case "3":
-			case "4":
-			case "5":
-			case "6":
-			case "7":
-			case "8":
-			case "9":
-			case "10":
-				sum += Integer.valueOf(str[1]);
-				break;
-			case "J":
-			case "Q":
-			case "K":
-				sum += 10;
-				break;
-			case "A":
-				sum += 11;
+			case "1":myPoint += 1;break;
+			case "J":case "Q":case "K":
+				myPoint += 10;break;
+			case "A":myPoint += 11;	break;
+			default:
+				myPoint += Integer.valueOf(str[1]);
 				break;
 			}
 		}
-		return sum;
+		return myPoint;
 	}
 
 	private static String aceCard(String deck, Player player) {
-		int checker = Checker.myCardSum(player);
+		int checker = Checker.myCardPoint(player);
 		if ("A".equals(deck)) {
 			if (player instanceof Dealer) {
 				if (checker <= 10) {
@@ -89,7 +69,7 @@ public class Checker {
 				}
 			} else {
 				if (checker <= 10) {
-					String tmp = String.format("%46s", "A를 11로 쓰실려면 Y, A를 1로 쓰실려면 N 입력해주세요.");
+					String tmp = String.format("%46s", "카드를 받았습니다. A를 11로 쓰실려면 Y, A를 1로 쓰실려면 N 입력해주세요.");
 					System.out.print(tmp);
 					String intput = scan.next();
 					if (("Y").equals(intput) || ("y").equals(intput)) {
@@ -101,9 +81,9 @@ public class Checker {
 		}
 		return deck;
 	}
-	
+
 	public static void setCard(Deck deck, Player player) {
-		System.out.println(player.getName() +" : 카드를 뽑습니다.");
+		System.out.println(player.getName() + " : 카드를 뽑습니다.");
 		String[] drawedCard = deck.drawCard();
 		switch (drawedCard[0]) {
 		case "0":
@@ -127,14 +107,14 @@ public class Checker {
 		String str = String.format(
 				"+----------------------------------------------+\n" + "|%13s%3s%30s|\n" + "|%46s|\n"
 						+ "|%6s%30d%10s|\n" + "+----------------------------------------------+\n",
-				player.getName(), " : ", " ", player.getPlayerCard(), "합계: ", Checker.myCardSum(player),
+				player.getName(), " : ", " ", player.getPlayerCard(), "합계: ", Checker.myCardPoint(player),
 				Checker.isBusted(player) ? "(Bust!)" : " ");
 		System.out.println(str);
 	}
 
 	public static String Winner(Player gamer, Player dealer) {
-		int gamerSum = Checker.myCardSum(gamer);
-		int dealerSum = Checker.myCardSum(dealer);
+		int gamerSum = Checker.myCardPoint(gamer);
+		int dealerSum = Checker.myCardPoint(dealer);
 		boolean gamerBusted = Checker.isBusted(gamer);
 		boolean dealerBusted = Checker.isBusted(dealer);
 
@@ -156,7 +136,7 @@ public class Checker {
 	}
 
 	public static boolean isBusted(Player player) {
-		int sumCard = Checker.myCardSum(player);
+		int sumCard = Checker.myCardPoint(player);
 		if (sumCard <= 21) {
 			return false;
 		} else {
