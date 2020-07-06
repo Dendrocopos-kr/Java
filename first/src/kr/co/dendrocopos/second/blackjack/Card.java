@@ -1,4 +1,4 @@
-package kr.co.dendrocops.second.blackjack;
+package kr.co.dendrocopos.second.blackjack;
 
 public class Card {
 	public final static String[] PATTRNS = {"♥","♣","◆","♠"};

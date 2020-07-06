@@ -1,4 +1,4 @@
-package kr.co.dendrocops.second.blackjack;
+package kr.co.dendrocopos.second.blackjack;
 
 import java.util.ArrayList;
 import java.util.List;
