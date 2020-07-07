@@ -1,44 +1,17 @@
 package kr.co.dendrocopos.first.BlackJack;
 
-import java.util.ArrayList;
-
-public class Dealer implements Player {
-
-	private String name;
-	private ArrayList<String> Card = new ArrayList<String>();
-	private String str;
-	private boolean gameTurn;
+public class Dealer extends Player {
 
 	public Dealer(String string) {
-		name = string;
+		setName(string);
 	}
-	
-	@Override
-	public String getName() {
-		return name;
-	}
-
-	@Override
-	public boolean getGameTurn() {
-		return gameTurn;
-	}
-
-	@Override
-	public void setGameTurn(boolean gameTurn) {
-		this.gameTurn = gameTurn;
-	}
-
-	@Override
-	public ArrayList<String> getPlayerCard() {
-		return Card;
-	}
-
 	@Override
 	public void viewCard() {
+		String str = "";
 		String temp = "";
-		str = String.format("+----------------------------------------------+\n|%13s%3s%30s|\n|", name, " : ", " ");
-		for (int i = 0; i < Card.size(); i++) {
-			temp += (i > 0) ? ", Blind" : "[Blind";
+		str = String.format("+----------------------------------------------+\n|%13s%3s%30s|\n|", getName(), " : ", " ");
+		for (int i = 0; i < getPlayerCard().size(); i++) {
+			temp += (i > 0) ? String.format(",%s", getPlayerCard().get(i)) : "[Blind";
 		}
 		str += String.format("%45s]|\n"
 				+ "|%6s%30s%10s|\n"

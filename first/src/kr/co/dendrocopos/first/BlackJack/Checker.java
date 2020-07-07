@@ -113,6 +113,7 @@ public class Checker {
 	}
 
 	public static String Winner(Player gamer, Player dealer) {
+		
 		int gamerSum = Checker.myCardPoint(gamer);
 		int dealerSum = Checker.myCardPoint(dealer);
 		boolean gamerBusted = Checker.isBusted(gamer);

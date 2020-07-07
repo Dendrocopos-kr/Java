@@ -6,8 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class CardDeck{
-	//private List<Card> deck = new LinkedList<Card>();
-	private List<Card> deck = new ArrayList<Card>();
+	private List<Card> deck = new LinkedList<Card>();
+	//private List<Card> deck = new ArrayList<Card>();
 
 	CardDeck() {
 		init();

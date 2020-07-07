@@ -5,12 +5,20 @@ public class Game {
 		
 		CardDeck cd = new CardDeck();
 		Gamer gamer = new Gamer();
-		gamer.receiveCard(cd.getCard());
-		gamer.receiveCard(cd.getCard());
-		gamer.receiveCard(cd.getCard());
-		gamer.receiveCard(cd.getCard());
-		gamer.receiveCard(cd.getCard());
+		Dealer dealer = new Dealer();
 		
-		gamer.openCards();
+		for(int i = 0 ; i < 2 ; i++) {
+			dealer.receiveCard(cd.getCard());
+			gamer.receiveCard(cd.getCard());
+		}
+		
+		System.out.println("나의 카드:");
+		gamer.moreCards(cd);
+		
+		dealer.moreCards(cd);
+		System.out.println("딜러카드:");
+		dealer.openCards();
+		Rules.whoIsWin(gamer, dealer);
+		
 	}
 }

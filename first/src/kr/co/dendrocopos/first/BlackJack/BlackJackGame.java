@@ -17,10 +17,7 @@ public class BlackJackGame {
 
 		// 게임 루프문
 		while (true) {
-			if (palyerturn) {
-				System.out.println("플레이어가 더 받지 않도록 합니다. (스테이) ");
-				gamer.setGameTurn(palyerturn);
-			} else {
+			 if(!gamer.getGameTurn()) {
 				System.out.println("플레이어가 더 받습니다. (히트) ");
 				Checker.setCard(deck,gamer);
 				gamer.viewCard();
@@ -28,14 +25,14 @@ public class BlackJackGame {
 				if (Checker.isBusted(gamer)) {
 					break;
 				} else {
-					palyerturn = Checker.checkPlayerMoreDraw(gamer);
+					if (palyerturn=Checker.checkPlayerMoreDraw(gamer)) {
+						System.out.println("플레이어가 더 받지 않도록 합니다. (스테이) ");
+						gamer.setGameTurn(palyerturn);
+					}
 				}
 			}
 
-			if (dealerturn) {
-				System.out.println("딜러가 더 받지 않도록 합니다. (스테이) ");
-				dealer.setGameTurn(dealerturn);
-			} else {
+			if (!dealer.getGameTurn()) {
 				System.out.println("딜러가 더 받습니다. (히트) ");
 				Checker.setCard(deck,dealer);
 				dealer.viewCard();
@@ -43,15 +40,19 @@ public class BlackJackGame {
 				if (Checker.isBusted(dealer)) {
 					break;
 				} else {
-					dealerturn = Checker.checkDealerMoreDraw(dealer);
+					if (dealerturn=Checker.checkDealerMoreDraw(dealer)) {
+						System.out.println("딜러가 더 받지 않도록 합니다. (스테이) ");	
+						dealer.setGameTurn(dealerturn);					
+					}
 				}
 			}
+			
 			if (palyerturn && dealerturn) {
 				System.out.println("모두 받지 않으므로 카드를 공개합니다. (오픈) ");
 				break;
 			}
 		}
-		
+
 		System.out.println("\n--♥-◆-♣-♠-♥-◆-♣-♠-♥---결과창---♠-♥-◆-♣-♠-♥-◆-♣-♠--");
 		Checker.playerAllCard(gamer);
 		Checker.playerAllCard(dealer);
@@ -60,18 +61,18 @@ public class BlackJackGame {
 		
 		Checker.scan.close();
 	}
-	
-	public static void initialization(Deck deck, Player player,Player dealer) {
-		System.out.printf("%46s","카드 셋팅중...\n");
-		//card.viewCard();
-		for(int i = 0 ; i < 2; i ++) {
-			Checker.setCard(deck,player);
-			player.viewCard();
-			Checker.setCard(deck,dealer);
-			dealer.viewCard();
-			//card.viewCard();
+
+	public static void initialization(Deck deck, Player player, Player dealer) {
+		System.out.printf("%46s", "카드 셋팅중...\n");
+		// card.viewCard();
+		for (int i = 0; i < 2; i++) {
+			Checker.setCard(deck, player);
+			//player.viewCard();
+			Checker.setCard(deck, dealer);
+			//dealer.viewCard();
+			// card.viewCard();
 		}
-		System.out.printf("%46s","카드 배분완료\n");
+		System.out.printf("%46s", "카드 배분완료\n");
 		player.viewCard();
 		dealer.viewCard();
 	}
