@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class CardDeck{
-	private List<Card> deck = new LinkedList<Card>();
+	public List<Card> deck = new LinkedList<Card>();
 	//private List<Card> deck = new ArrayList<Card>();
 
 	CardDeck() {
@@ -17,6 +18,7 @@ public class CardDeck{
 		addCard();
 		shuffleDeck();
 	}
+
 	
 	private void addCard() {
 		for (int i = 0; i < Card.PATTRNS.length; i++) {
@@ -85,7 +87,6 @@ public class CardDeck{
 		/*
 		return deck.toString();
 		*/
-		
 		String str = "";
 		//String temp1 = Card.PATTRNS[0];
 		for(Card c: deck) {
