@@ -24,6 +24,10 @@ public class Menu {
 		menu.add(e);
 	}
 	
+	public void menuEdit(String name, int price) {
+		
+	}
+	
 	public MenuItem choose(int index) {
 		try {
 			return menu.get(index);
