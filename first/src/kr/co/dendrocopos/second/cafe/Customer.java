@@ -71,5 +71,11 @@ public class Customer {
 				return orderSelect(menu,sc);
 			}
 		}
+	}
+
+	public void drinkCoffee(Coffee coffee) {
+		System.out.println(coffee.getName()+"를(을) 마신다");
+		System.out.printf("%,d원 지불했다!",coffee.getPrice());
+		
 	}	
 }

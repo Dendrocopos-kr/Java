@@ -1,6 +1,5 @@
 package kr.co.dendrocopos.second.cafe;
 
-import java.util.Scanner;
 
 public class Cafe {
 	public static void main(String[] args) {
@@ -17,8 +16,11 @@ public class Cafe {
 		 */
 		Menu menu = new Menu();
 		Customer cus = new Customer();
+		Barista bas = new Barista();
 		
-		MenuItem mi = null;
-		System.out.println(mi);
+		MenuItem choiceMenu = cus.order(menu);
+		Coffee coffee = bas.makeCoffee(choiceMenu);
+		
+		cus.drinkCoffee(coffee);
 	}
 }
